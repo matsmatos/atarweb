@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <title>ATAR</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <link href="css/layout.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/service/services-servico.js"></script>
+    <script src="js/service/services.js"></script>
+    <script src="js/controller/controllers-servico.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    
+</head>
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+<body>
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Home</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Enter your query...</label>
+            </div>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li class="mdl-menu__item">About</li>
+            <li class="mdl-menu__item">Contact</li>
+            <li class="mdl-menu__item">Legal information</li>
+          </ul>
+        </div>
+      </header>
+      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+          <img src="images/user.jpg" class="demo-avatar">
+          <div class="demo-avatar-dropdown">
+            <span>hello@example.com</span>
+            <div class="mdl-layout-spacer"></div>
+            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+              <i class="material-icons" role="presentation">arrow_drop_down</i>
+              <span class="visuallyhidden">Accounts</span>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+              <li class="mdl-menu__item">hello@example.com</li>
+              <li class="mdl-menu__item">info@example.com</li>
+              <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+            </ul>
+          </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Inbox</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Spam</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Purchases</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
+          <div class="mdl-layout-spacer"></div>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+        </nav>
+      </div>
+    <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+        <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar &times;</button>
+	  <button onclick="myFunction()" class="w3-bar-item w3-button dropbtn menuPai" >Gerenciamentos</button>
+	  
+	  <div id="myDropdown" class="dropdown-content">
+	    <a href="AtarWeb/cadastro-cliente.html" class="w3-bar-item w3-button">Cadastro de Cliente</a>
+        <a href="AtarWeb/cadastro-equipamento.html" class="w3-bar-item w3-button">Cadastro de Equipamento</a>
+        <a href="AtarWeb/cadastro-servico.html" class="w3-bar-item w3-button">Cadastro de Servico</a>
+	  </div>
+	  
+	  <!-- Uses a header that scrolls with the text, rather than staying
+  locked at the top -->
+
+
+  
+  
+</div>
+
+<!--     Page Content -->
+     <div class="w3-teal">
+         <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰ ATAR</button>
+     </div>
+     <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+        
+        function formataDtServ(data) {   
+    		console.log(data);
+        }
+    </script> 
+
+
+    <div class="container bg-light">
+		
+
+   		
+    
+		   
+        <div ng-controller="ServicoCRUDCtrl" class="container">
+        <br>
+
+        
+            <h3>Cadastro de Serviços</h3>
+            <form>
+               <!-- Textfield with Floating Label -->
+
+
+
+				<!--Basic textarea-->
+				<div class="form-groupp">
+				  <label for="descricao">Descrição do Serviço:</label>
+				  <textarea ng-model="servico.descricao" type="text" id="descricao" class="md-textarea form-control" mdbInputDirective placeholder="Digite a descrição..."></textarea>
+				</div><br>
+				
+				<div class="form-groupp">
+					<label for="tipo">Tipo: </label><br>
+					<select class="form-control" name="singleSelect" ng-model="servico.tipo" value="Selecione...">
+						<option value="" selected="selected">Selecione...</option>
+	 					<option value="INSTALAÇÃO">INSTALAÇÃO</option>
+						<option value="MANUTENÇÃO CORRETIVA">MANUTENÇÃO CORRETIVA</option>
+						<option value="MANUTENÇÃO PREVENTIVA">MANUTENÇÃO PREVENTIVA</option>
+						<option value="OUTROS">OUTROS</option>
+					</select>
+				</div><br>
+                
+				<!--Basic textarea-->
+				<div class="form-groupp">
+				  <label for="observacao">Observação:</label>
+				  <textarea ng-model="servico.observacao" type="text" id="observacao" class="md-textarea form-control" mdbInputDirective placeholder="Digite a observação..."></textarea>
+				</div><br>
+				
+				<div class="form-group">
+			       <label for="dtInicioServ" class="control-label">Data de Início: </label>
+			       <div class="control">
+			           <input ng-model="servico.dtInicioServico" id="dtInicioServ" class="form-control" type="date" date-model="dtInicioServ">
+			       </div>
+			   </div>
+			   
+			   <div class="form-group">
+			       <label for="dtFinalServico" class="control-label">Data de Finalização: </label>
+			       <div class="control">
+			           <input ng-model="servico.dtFinalServico" id="dtFimServ" class="form-control" type="date" date-model="dtFinalServico">
+			       </div>
+			   </div>
+				
+				
+				
+          
+        			
+                
+                <button type="button" class="mdl-button mdl-button--colored mdl-button--raised mdl-js-button mdl-js-ripple-effect" ng-click="addServico(servico)">Salvar</button>
+            </form>
+            <br>
+
+            <div class="alert alert-success alert-dismissible" ng-if="isExibirSucesso">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Successo!</strong>{{message}}
+            </div>
+            <div class="alert alert-danger alert-dismissible" ng-if="isExibirErro">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Falha!</strong> {{errorMessage}}
+            </div>
+
+            <br>
+            <br>
+
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

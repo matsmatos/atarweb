@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <title>ATAR</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/service/services.js"></script>
+    <script src="js/controller/controllers.js"></script>
+	<script type="text/javascript" src="js/jquery.mask.min.js"/></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+<!--     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+</head>
+
+<script>
+	<!-- SCRIPT MENU -->
+	/* When the user clicks on the button, 
+	toggle between hiding and showing the dropdown content */
+	function myFunction() {
+	  document.getElementById("myDropdown").classList.toggle("show");
+	}
+	
+	// Close the dropdown menu if the user clicks outside of it
+	window.onclick = function(event) {
+	  if (!event.target.matches('.dropbtn')) {
+	    var dropdowns = document.getElementsByClassName("dropdown-content");
+	    var i;
+	    for (i = 0; i < dropdowns.length; i++) {
+	      var openDropdown = dropdowns[i];
+	      if (openDropdown.classList.contains('show')) {
+	        openDropdown.classList.remove('show');
+	      }
+	    }
+	  }
+	}
+	<!-- FIM SCRIPT MENU -->
+</script>
+
+<body>
+	<!-- MENU -->
+    <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+      <button onclick="w3_close()" class="w3-bar-item w3-large btnFechar">☰ &times;</button>
+	  <button onclick="myFunction()" class="w3-bar-item w3-button dropbtn menuPai" >GERENCIAMENTO</button>
+	  <div id="myDropdown" class="dropdown-content">
+	    <a href="cadastro-cliente.html" class="w3-bar-item w3-button">Cadastrar Cliente</a>
+        <a href="cadastro-equipamento.html" class="w3-bar-item w3-button">Cadastrar Equipamento</a>
+        <a href="cadastro-servico.html" class="w3-bar-item w3-button">Cadastrar Serviço</a>
+        <a href="listar-clientes.html" class="w3-bar-item w3-button">Listar Clientes</a>
+        <a href="listar-equipamentos.html" class="w3-bar-item w3-button">Listar Equipamentos</a>
+        <a href="listar-servicos.html" class="w3-bar-item w3-button">Listar Serviços</a>
+	  </div>
+    </div>
+
+    <div class="w3-teal btnMenu">
+        <button id="btnMenu" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰ ATAR <img id="auxMenuIcon" src="images/cold5bold-512x512.png" alt=""></button>
+        
+    </div>
+    <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+        function GoBackWithRefresh(event) {
+            if ('referrer' in document) {
+                window.location = document.referrer;
+                /* OR */
+                //location.replace(document.referrer);
+            } else {
+                window.history.back();
+            }
+        }
+    </script>
+	<!-- FIM MENU -->
+
+    <div class="container bg-light">
+    <div id="meplus-consumer-eu-enroll" class="form row no-header padded clearfix">
+        <div ng-controller="ClienteCRUDCtrl" class="padraoContainer">
+        <br>
+        <img id="imgCadastrarCliente" src="images/iconfinder_3_2716420.png" style="float: right; margin-top: -2%;" >
+			<img id="imgCadastroServico2" src="images/maintenance.png" ><br>
+        
+            <h3>Cadastro de Clientes</h3>
+            <br>
+            <form>
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="nome" class="form-control" id="nome" required placeholder="Digite o nome" ng-model="cliente.nome">
+                    <input type="hidden" class="form-control" id="id" ng-model="cliente.id">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Endereço:</label>
+                    <input type="endereco" class="form-control" id="endereco" required placeholder="Digite o endereço" ng-model="cliente.endereco">
+                </div>
+                <div class="form-group">
+                    <label for="txttelefone">Telefone:</label>
+                    <input type="tel" name="txttelefone" class="form-control" id="txttelefone" required placeholder="Digite o telefone" ng-model="cliente.telefone">
+<!-- 					<script type="text/javascript">$("#txttelefone").mask("(00) 00000-0009");</script> -->
+                </div><br>
+                
+                <button type="button" class="text-white-100 btnPadrao" ng-click="addCliente(cliente)" style="float: right; margin-left: 3%;" title="Salvar">SALVAR</button>
+                <button type="button" onclick="GoBackWithRefresh();return false;" class="text-white-100 btnPadrao" style="float: right;" title="Voltar">VOLTAR</button><br><br> 
+                
+            </form>
+            <br>
+
+            <div class="alert alert-success alert-dismissible" ng-if="isExibirSucesso">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Successo!</strong>{{message}}
+            </div>
+            <div class="alert alert-danger alert-dismissible" ng-if="isExibirErro">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Falha!</strong> {{errorMessage}}
+            </div>
+            
+        </div>
+    </div>
+    </div>
+</body>
+</html>
