@@ -4,7 +4,7 @@ app.service('ClienteCRUDService', ['$http', function ($http) {
     this.addCliente = function addUser(cliente) {   
         return $http({
             method: 'POST',
-            url: '/atar/cadastrar-cliente',
+            url: 'http://vps17465.publiccloud.com.br:8080/AtarWeb/atar/cadastrar-cliente',
             data: {
             	nome : cliente.nome,
             	endereco : cliente.endereco,
@@ -17,7 +17,7 @@ app.service('ClienteCRUDService', ['$http', function ($http) {
     this.updateCliente = function addClie(cliente) {   
         return $http({
             method: 'POST',
-            url: '/atar/cadastrar-cliente/alterar',
+            url: 'http://vps17465.publiccloud.com.br:8080/AtarWeb/atar/cadastrar-cliente/alterar',
             data: {
             	nome : cliente.nome,
             	endereco : cliente.endereco,
@@ -30,14 +30,14 @@ app.service('ClienteCRUDService', ['$http', function ($http) {
     this.getAllClientes = function getAllClientes() {
         return $http({
             method: 'GET',
-            url: '/atar/cadastrar-cliente/listar-cliente'
+            url: 'http://vps17465.publiccloud.com.br:8080/AtarWeb/atar/cadastrar-cliente/listar-cliente'
         });
     } 
 
     this.deleteCliente = function deleteCliente(cliente) {
   	  return $http({
             method: 'POST',
-            url: '/atar/cadastrar-cliente/excluir',
+            url: 'http://vps17465.publiccloud.com.br:8080/AtarWeb/atar/cadastrar-cliente/excluir',
             data: {
             	id : cliente.id
             }

@@ -4,7 +4,7 @@ app.service('ServicoCRUDService', ['$http', function ($http) {
     this.addServico = function addServ(servico) {   
         return $http({
             method: 'POST',
-            url: '/atar/cadastrar-servico',
+            url: 'http://vps17465.publiccloud.com.br:8080/AtarWeb/atar/cadastrar-servico',
             data: {
             	descricao : servico.descricao,
             	tipo : servico.tipo,
@@ -21,7 +21,7 @@ app.service('ServicoCRUDService', ['$http', function ($http) {
     this.updateServico = function addServ(servico) {       	
         return $http({
             method: 'POST',
-            url: '/atar/cadastrar-servico/alterar',
+            url: 'http://vps17465.publiccloud.com.br:8080/AtarWeb/atar/cadastrar-servico/alterar',
             data: {
             	descricao : servico.descricao,
             	tipo : servico.tipo,
@@ -39,7 +39,7 @@ app.service('ServicoCRUDService', ['$http', function ($http) {
     this.getAllServicos = function getAllServicos() {
         return $http({
             method: 'GET',
-            url: '/atar/cadastrar-servico/listar'
+            url: 'http://vps17465.publiccloud.com.br:8080/AtarWeb/atar/cadastrar-servico/listar'
         });
     } 
 
@@ -47,7 +47,7 @@ app.service('ServicoCRUDService', ['$http', function ($http) {
     this.deleteServico = function deleteServico(servico) {
     	  return $http({
               method: 'POST',
-              url: '/atar/cadastrar-servico/excluir',
+              url: 'http://vps17465.publiccloud.com.br:8080/AtarWeb/atar/cadastrar-servico/excluir',
               data: {
               	id : servico.id
               }
