@@ -144,7 +144,7 @@
 			</div><br>
 			
 			<div id="btnIncluir" align="right">
-				<form action="/cadastro-servico.html">
+				<form action="cadastro-servico.html">
 				    <input type="submit" class="text-white-100 btnPadrao"  value="INCLUIR" title="Incluir" style="float: right; margin-left: 3%;"/>
 				</form>
 				<form>
@@ -222,14 +222,14 @@
              
  
                <div class="form-group">
-                <label for="cliente">Cliente: </label><br>                
+                <label for="clientex">Cliente: </label><br>
                 <select class="form-control" ng-model="servico.cliente.id" ng-options="c.id as c.nome for c in lstClientes" ng-value="servico.cliente.nomeCliente">
                 	<option value="" selected="selected">Selecione...</option>
  
                 </select>
             </div>
             	<div class="form-group">
-	                <label for="cliente">Equipamento: </label> 
+	                <label for="cliente">Equipamento: </label>
 	                <select class="form-control" ng-model="servico.equipamento.id" ng-options="c.id as c.modelo for c in equipamentos">
 	                	<option value="" selected="selected">Selecione...</option>
 	                </select>
